@@ -29,13 +29,13 @@ namespace HeroesApi.Services
             await _context.SaveChangesAsync();
         }
 
-        public async Task UpdateHeroAsync(Power power)
+        public async Task UpdatePowerAsync(Power power)
         {
             _context.Powers.Update(power);
             await _context.SaveChangesAsync();
         }
 
-        public void DeleteHero(Power power)
+        public void DeletePower(Power power)
         {
             _context.Powers.Remove(power);
         }
