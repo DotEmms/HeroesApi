@@ -37,7 +37,8 @@ namespace HeroesApi.Services
 
         public async Task DeletePowerAsync(int id)
         {
-            var power = await this.GetPowerAsync(id);
+            var power = new Power { ID = id };
+            _context.Attach(power);
             _context.Powers.Remove(power);
 
             await _context.SaveChangesAsync();

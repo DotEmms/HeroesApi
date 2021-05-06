@@ -45,7 +45,7 @@ namespace HeroesApi.Controllers
             await _service.UpdateHeroAsync(hero);
         }
 
-        [HttpDelete]
+        [HttpDelete("{id}")]
         public void DeleteHero(int id)
         {
             _service.DeleteHeroAsync(id);

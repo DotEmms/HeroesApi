@@ -37,7 +37,9 @@ namespace HeroesApi.Services
 
         public async Task DeleteHeroAsync(int id)
         {
-            var hero = await this.GetHeroAsync(id);
+            var hero = new Hero { ID = id };
+
+            _context.Attach(hero);
             _context.Heroes.Remove(hero);
 
             await _context.SaveChangesAsync();
