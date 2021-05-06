@@ -31,6 +31,10 @@ namespace HeroesApi
         {
 
             services.AddControllers();
+
+            // Allow Cross-origin requests -> Disabled by default
+            services.AddCors();
+
             services.AddSwaggerGen(c =>
             {
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "HeroesApi", Version = "v1" });
@@ -58,6 +62,9 @@ namespace HeroesApi
             app.UseHttpsRedirection();
 
             app.UseRouting();
+
+            // Important -> Place this between routing and authorization
+            app.UseCors(x => x.AllowAnyHeader().AllowAnyMethod().WithOrigins("https://localhost:44343/"));
 
             app.UseAuthorization();
 
