@@ -2,6 +2,7 @@
 using HeroesApi.Services;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Logging;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -15,7 +16,7 @@ namespace HeroesApi.Controllers
     public class HeroController : ControllerBase
     {
         private IHeroService _service;
-        public HeroController(HeroService service)
+        public HeroController(IHeroService service)
         {
             _service = service;
         }

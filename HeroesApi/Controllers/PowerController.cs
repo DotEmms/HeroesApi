@@ -15,7 +15,7 @@ namespace HeroesApi.Controllers
     public class PowerController : ControllerBase
     {
         private IPowerService _service;
-        public PowerController(PowerService service)
+        public PowerController(IPowerService service)
         {
             _service = service;
         }
