@@ -44,6 +44,8 @@ namespace HeroesApi
             {
                 x.UseSqlServer(Configuration.GetConnectionString("DefaultConnectionString"));
             });
+
+            // Register Dependency Injection Services
             services.AddTransient<IHeroService, HeroService>();
             services.AddTransient<IPowerService, PowerService>();
 
@@ -64,7 +66,7 @@ namespace HeroesApi
             app.UseRouting();
 
             // Important -> Place this between routing and authorization
-            app.UseCors(x => x.AllowAnyHeader().AllowAnyMethod().WithOrigins("https://localhost:44343/"));
+            app.UseCors(x => x.AllowAnyHeader().AllowAnyMethod().WithOrigins("http://localhost:4200"));
 
             app.UseAuthorization();
 

@@ -2,7 +2,6 @@
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Threading.Tasks;
 
 namespace HeroesApi.Services
@@ -10,14 +9,17 @@ namespace HeroesApi.Services
     public class HeroService : IHeroService
     {
         private HeroesApiContext _context;
+
         public HeroService(HeroesApiContext context)
         {
             _context = context;
         }
+
         public async Task<List<Hero>> GetHeroesAsync()
         {
             return await _context.Heroes.ToListAsync();
         }
+
         public async Task<Hero> GetHeroAsync(int id)
         {
             return await _context.Heroes.FindAsync(id);
@@ -35,9 +37,12 @@ namespace HeroesApi.Services
             await _context.SaveChangesAsync();
         }
 
-        public void DeleteHero(Hero hero)
+        public async Task DeleteHeroAsync(int id)
         {
-            _context.Heroes.Remove(hero);
+            var hero = new Hero { ID = id };
+            _context.Attach(hero);
+            _context.Remove(hero);
+            await _context.SaveChangesAsync();
         }
     }
 }

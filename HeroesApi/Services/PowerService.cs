@@ -1,8 +1,6 @@
 ﻿using HeroesApi.Entities;
 using Microsoft.EntityFrameworkCore;
-using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Threading.Tasks;
 
 namespace HeroesApi.Services
@@ -10,14 +8,17 @@ namespace HeroesApi.Services
     public class PowerService : IPowerService
     {
         private HeroesApiContext _context;
+
         public PowerService(HeroesApiContext context)
         {
             _context = context;
         }
+
         public async Task<List<Power>> GetPowersAsync()
         {
             return await _context.Powers.ToListAsync();
         }
+
         public async Task<Power> GetPowerAsync(int id)
         {
             return await _context.Powers.FindAsync(id);
@@ -35,9 +36,13 @@ namespace HeroesApi.Services
             await _context.SaveChangesAsync();
         }
 
-        public void DeletePower(Power power)
+        public async Task DeletePowerAsync(int id)
         {
-            _context.Powers.Remove(power);
+            var power = new Power { ID = id };
+            _context.Attach(power);
+            _context.Remove(power);
+
+            await _context.SaveChangesAsync();
         }
     }
 }

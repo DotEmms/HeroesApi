@@ -7,7 +7,7 @@ namespace HeroesApi.Services
     public interface IPowerService
     {
         Task AddPowerAsync(Power power);
-        void DeletePower(Power power);
+        Task DeletePowerAsync(int id);
         Task<Power> GetPowerAsync(int id);
         Task<List<Power>> GetPowersAsync();
         Task UpdatePowerAsync(Power power);

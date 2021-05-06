@@ -1,10 +1,7 @@
 ﻿using HeroesApi.Entities;
 using HeroesApi.Services;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
-using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Threading.Tasks;
 
 namespace HeroesApi.Controllers
@@ -44,10 +41,10 @@ namespace HeroesApi.Controllers
             await _service.UpdatePowerAsync(power);
         }
 
-        [HttpDelete]
-        public void Delete(Power power)
+        [HttpDelete("{id}")]
+        public async Task Delete(int id)
         {
-            _service.DeletePower(power);
+            await _service.DeletePowerAsync(id);
         }
     }
 }
