@@ -45,9 +45,9 @@ namespace HeroesApi.Controllers
         }
 
         [HttpDelete]
-        public void Delete(Power power)
+        public void Delete(int id)
         {
-            _service.DeletePower(power);
+            _service.DeletePowerAsync(id);
         }
     }
 }

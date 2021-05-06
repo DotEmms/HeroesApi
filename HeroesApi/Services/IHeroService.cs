@@ -7,7 +7,7 @@ namespace HeroesApi.Services
     public interface IHeroService
     {
         Task AddHeroAsync(Hero hero);
-        void DeleteHero(Hero hero);
+        Task DeleteHeroAsync(int id);
         Task<Hero> GetHeroAsync(int id);
         Task<List<Hero>> GetHeroesAsync();
         Task UpdateHeroAsync(Hero hero);

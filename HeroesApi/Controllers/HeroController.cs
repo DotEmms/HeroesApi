@@ -46,9 +46,9 @@ namespace HeroesApi.Controllers
         }
 
         [HttpDelete]
-        public void DeleteHero(Hero hero)
+        public void DeleteHero(int id)
         {
-            _service.DeleteHero(hero);
+            _service.DeleteHeroAsync(id);
         }
     }
 }

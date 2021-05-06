@@ -35,11 +35,12 @@ namespace HeroesApi.Services
             await _context.SaveChangesAsync();
         }
 
-        public void DeleteHero(Hero hero)
+        public async Task DeleteHeroAsync(int id)
         {
+            var hero = await this.GetHeroAsync(id);
             _context.Heroes.Remove(hero);
 
-            _context.SaveChangesAsync();
+            await _context.SaveChangesAsync();
         }
     }
 }
