@@ -38,6 +38,8 @@ namespace HeroesApi.Services
         public void DeleteHero(Hero hero)
         {
             _context.Heroes.Remove(hero);
+
+            _context.SaveChangesAsync();
         }
     }
 }

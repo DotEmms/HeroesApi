@@ -35,9 +35,12 @@ namespace HeroesApi.Services
             await _context.SaveChangesAsync();
         }
 
-        public void DeletePower(Power power)
+        public void DeletePowerAsync(Power power)
         {
+            
             _context.Powers.Remove(power);
+
+            _context.SaveChangesAsync();
         }
     }
 }
